@@ -1,0 +1,8 @@
+
+{
+  "name": "DPI-4: Emergency Resource Allocation Dashboard",
+  "description": "A high-performance disaster management system for real-time emergency request tracking, resource inventory management, and smart allocation logic with low-connectivity support.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
