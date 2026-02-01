@@ -25,6 +25,8 @@ export enum DisasterType {
   WILDFIRE = 'Wildfire',
   HURRICANE = 'Hurricane',
   CHEMICAL_SPILL = 'Chemical Spill',
+  ACCIDENT = 'Accident',
+  MEDICAL_EMERGENCY = 'Medical Emergency',
   OTHER = 'Other'
 }
 
@@ -36,7 +38,7 @@ export enum ZoneType {
 }
 
 export type UserRole = 'guest' | 'citizen' | 'authority' | 'civil_servant';
-export type ActiveView = 'home' | 'report' | 'dashboard' | 'inventory' | 'intelligence' | 'guidelines' | 'task';
+export type ActiveView = 'home' | 'report' | 'dashboard' | 'inventory' | 'intelligence' | 'guidelines' | 'task' | 'chat';
 
 export interface Coordinates {
   lat: number;
