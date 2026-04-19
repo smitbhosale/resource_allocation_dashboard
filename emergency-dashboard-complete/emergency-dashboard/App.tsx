@@ -65,16 +65,24 @@ const App: React.FC = () => {
       setRole(currentUser.role);
     }
     
-    const dbReq = DataService.getRequests();
-    const dbRes = DataService.getResources();
+    let dbReq = DataService.getRequests();
+    let dbRes = DataService.getResources();
     const savedZones = localStorage.getItem('dpi4_zones');
 
-    // Initialize with enhanced seed data if database is empty
-    if (dbReq.length === 0) {
+    // Filter out old mock LA data
+    dbReq = dbReq.filter(req => req.location.lng > 0);
+    dbRes = dbRes.filter(res => res.location.lng > 0);
+
+    // Initialize seed data block
+    if (dbReq.length === 0 || dbRes.length === 0) {
       const { requests: seedRequests, resources: seedResources } = initializeSeedData();
-      setRequests(seedRequests);
-      setResources(seedResources);
-      DataService.saveData(seedRequests, seedResources);
+      
+      const newReqs = dbReq.length === 0 ? seedRequests : dbReq;
+      const newRes = dbRes.length === 0 ? seedResources : dbRes;
+
+      setRequests(newReqs);
+      setResources(newRes);
+      DataService.saveData(newReqs, newRes);
     } else {
       setRequests(dbReq);
       setResources(dbRes);
@@ -116,7 +124,7 @@ const App: React.FC = () => {
       id: `REQ-${Math.floor(1000 + Math.random() * 9000)}`,
       status: 'Pending',
       timestamp: new Date().toISOString(),
-      location: { lat: 34.0522 + (Math.random() - 0.5) * 0.1, lng: -118.2437 + (Math.random() - 0.5) * 0.1 },
+      location: reportData.location || { lat: 34.0522 + (Math.random() - 0.5) * 0.1, lng: -118.2437 + (Math.random() - 0.5) * 0.1 },
       priorityScore: 0,
       syncStatus: isOnline ? 'synced' : 'pending',
       disasterType: reportData.disasterType || INITIAL_REQUESTS[0].disasterType,

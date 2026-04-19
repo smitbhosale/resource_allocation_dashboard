@@ -3,7 +3,7 @@ import { calculatePriorityScore } from './allocationEngine';
 
 // Generate realistic emergency requests
 export function generateSeedRequests(): EmergencyRequest[] {
-  const requests: EmergencyRequest[] = [];
+  return [];
   const descriptions = {
     [DisasterType.FLOOD]: [
       'Severe flooding in residential area. Multiple families stranded on rooftops.',
@@ -99,7 +99,6 @@ export function generateSeedRequests(): EmergencyRequest[] {
 // Generate resource units
 export function generateSeedResources(): ResourceUnit[] {
   const resources: ResourceUnit[] = [];
-  
   const ambulanceNames = ['Metro Ambulance 1', 'City EMS Unit', 'County Paramedic Van', 'Emergency Response Alpha', 'Medical Transport Beta'];
   const medicalNames = ['City Hospital Team A', 'Trauma Unit Mobile', 'Field Medical Station', 'Emergency Care Squad', 'Rapid Response Medics'];
   const rescueNames = ['Fire Department Rescue 1', 'USAR Team Alpha', 'Mountain Rescue Unit', 'Water Rescue Squad', 'Heavy Rescue Team'];
@@ -115,11 +114,8 @@ export function generateSeedResources(): ResourceUnit[] {
   let id = 1;
   resourceConfigs.forEach(config => {
     for (let i = 0; i < config.count; i++) {
-      const statusRoll = Math.random();
-      let status: ResourceStatus;
-      if (statusRoll < 0.6) status = ResourceStatus.AVAILABLE;
-      else if (statusRoll < 0.85) status = ResourceStatus.IN_USE;
-      else status = ResourceStatus.MAINTENANCE;
+      // Making all units Available as requested
+      let status: ResourceStatus = ResourceStatus.AVAILABLE;
       
       resources.push({
         id: `RES-${String(id).padStart(3, '0')}`,
@@ -128,8 +124,8 @@ export function generateSeedResources(): ResourceUnit[] {
         quantity: config.quantity,
         status,
         location: {
-          lat: 34.0522 + (Math.random() - 0.5) * 0.6,
-          lng: -118.2437 + (Math.random() - 0.5) * 0.6
+          lat: 20.5937 + (Math.random() - 0.5) * 6.0,
+          lng: 78.9629 + (Math.random() - 0.5) * 6.0
         }
       });
       id++;

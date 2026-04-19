@@ -10,15 +10,15 @@ interface MapReportViewProps {
 
 export const MapReportView: React.FC<MapReportViewProps> = ({ onSubmit }) => {
   const [step, setStep] = useState<'map' | 'chat'>('map');
-  const [tempLocation, setTempLocation] = useState<{ x: number, y: number } | null>(null);
+  const [tempLocation, setTempLocation] = useState<{ x?: number, y?: number, lat: number, lng: number } | null>(null);
 
-  const handleMapClick = (coords: { x: number, y: number }) => {
+  const handleMapClick = (coords: { x?: number, y?: number, lat: number, lng: number }) => {
     setTempLocation(coords);
   };
 
   const handleUseMyLocation = () => {
-    // Mock current location near center
-    setTempLocation({ x: 50, y: 50 });
+    // Center of map as fallback if geolocation fails
+    setTempLocation({ lat: 20.5937, lng: 78.9629 });
   };
 
   const handleConfirmLocation = () => {
@@ -28,14 +28,11 @@ export const MapReportView: React.FC<MapReportViewProps> = ({ onSubmit }) => {
   };
 
   // Mock data for map background
-  const emptyList: any[] = [];
+  const emptyList = React.useMemo(() => [], []);
   
-  // Format coordinates for display (mock lat/lng based on x/y)
-  const getLatLong = (loc: {x: number, y: number}) => {
-      // Centroid roughly Nagpur: 21.1458, 79.0882
-      const lat = 21.1458 + (loc.y - 50) * 0.001;
-      const lng = 79.0882 + (loc.x - 50) * 0.001;
-      return `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+  // Format coordinates for display
+  const getLatLong = (loc: {lat: number, lng: number}) => {
+      return `${loc.lat.toFixed(6)}, ${loc.lng.toFixed(6)}`;
   }
 
   return (
@@ -117,12 +114,12 @@ export const MapReportView: React.FC<MapReportViewProps> = ({ onSubmit }) => {
               </div>
               <div className="flex-1 relative">
                   <ChatbotView onSubmit={(data) => {
-                      // Add location to report data
+                      // Add real location to report data
                       const reportWithLoc = {
                           ...data,
                           location: { 
-                              lat: 21.1458 + (tempLocation.y - 50) * 0.001,
-                              lng: 79.0882 + (tempLocation.x - 50) * 0.001
+                              lat: tempLocation.lat,
+                              lng: tempLocation.lng
                           }
                       };
                       onSubmit(reportWithLoc);

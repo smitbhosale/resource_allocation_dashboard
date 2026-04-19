@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive India Explorer | Leaflet Map</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="A highly responsive and interactive map of India built with Leaflet.js and OpenStreetMap. Click to explore, add markers, and find locations.">
+    <meta name="keywords" content="Leaflet, OpenStreetMap, India Map, Interactive Map, Web Development, Javascript Map">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #1e1b4b;
+            --accent-color: #06b6d4;
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        #map-wrapper {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 200px);
+            min-height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 4px solid white;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            width: 280px;
+            pointer-events: auto;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .info-panel h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .coords-list {
+            list-style: none;
+            max-height: 150px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+
+        .coords-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .coords-item:last-child {
+            border-bottom: none;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-val {
+            display: block;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        /* Custom Leaflet Styling */
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+            padding: 5px;
+            box-shadow: var(--shadow);
+        }
+
+        .leaflet-popup-content {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .leaflet-container {
+            background-color: #cbd5e1;
+        }
+
+        .leaflet-control-zoom {
+            border: none !important;
+            box-shadow: var(--shadow) !important;
+        }
+
+        .leaflet-control-zoom a {
+            border-radius: 8px !important;
+            margin-bottom: 5px;
+            color: var(--primary-color) !important;
+        }
+
+        footer {
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+            #map-wrapper {
+                height: 60vh;
+            }
+            .info-panel {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            .header-controls .btn span {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-panel {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GeoExplorer India</h1>
+        <div class="header-controls">
+            <button id="locate-btn" class="btn">
+                <span>Find My Location</span>
+            </button>
+            <button id="clear-markers" class="btn">
+                <span>Clear Markers</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div id="map-wrapper">
+            <div id="map"></div>
+            
+            <div class="info-panel" id="ui-panel">
+                <h3>Live Activity</h3>
+                <div class="coords-list" id="marker-log">
+                    <div class="coords-item" style="color: #64748b; justify-content: center;">No markers added yet</div>
+                </div>
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="stat-val" id="marker-count">1</span>
+                        <span class="stat-label">Total Markers</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val" id="zoom-level">5</span>
+                        <span class="stat-label">Zoom Level</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Interactive India Explorer | Powered by Leaflet & OpenStreetMap
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        // Initialization
+        const indiaCenter = [20.5937, 78.9629];
+        const initialZoom = 5;
+        
+        // Setup Map
+        const map = L.map('map', {
+            center: indiaCenter,
+            zoom: initialZoom,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            dragging: true
+        });
+
+        // Add OSM Tile Layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // State Management
+        let markers = [];
+        const markerLog = document.getElementById('marker-log');
+        const markerCountDisp = document.getElementById('marker-count');
+        const zoomLevelDisp = document.getElementById('zoom-level');
+
+        // Clear Initial Marker Requirement
+        // No default location marker now, driven entirely by React data.
+
+        // Function to add a marker with animation/style
+        function addMarker(lat, lng, popupContent) {
+            const marker = L.marker([lat, lng]).addTo(map);
+            
+            const content = popupContent || `
+                <div style="padding: 5px">
+                    <strong style="color: #4f46e5">New Marker</strong><br>
+                    <span style="font-size: 0.8rem">Lat: ${lat.toFixed(4)}</span><br>
+                    <span style="font-size: 0.8rem">Lon: ${lng.toFixed(4)}</span>
+                </div>
+            `;
+            
+            marker.bindPopup(content).openPopup();
+            markers.push(marker);
+            
+            updateUI(lat, lng);
+        }
+
+        // Update UI Panel
+        function updateUI(lat, lng) {
+            if (markers.length === 1 && lat === indiaCenter[0]) return; // Skip initial
+
+            if (markerLog.innerText.includes("No markers added yet")) {
+                markerLog.innerHTML = '';
+            }
+
+            const item = document.createElement('div');
+            item.className = 'coords-item';
+            item.innerHTML = `
+                <span>${lat.toFixed(3)}, ${lng.toFixed(3)}</span>
+                <span style="color: #10b981; font-weight: 500;">Added</span>
+            `;
+            markerLog.prepend(item);
+            
+            markerCountDisp.innerText = markers.length;
+        }
+
+        // Click Event: Add Marker
+        map.on('click', (e) => {
+            const { lat, lng } = e.latlng;
+            addMarker(lat, lng);
+            
+            // Post message to parent for integration with React dashboard
+            const point = map.latLngToContainerPoint(e.latlng);
+            const size = map.getSize();
+            const x = (point.x / size.x) * 100;
+            const y = (point.y / size.y) * 100;
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: 'MAP_CLICK', lat, lng, x, y }, '*');
+            }
+        });
+
+        // Zoom Update UI
+        map.on('zoomend', () => {
+            zoomLevelDisp.innerText = map.getZoom();
+        });
+
+        // Geolocation Feature
+        document.getElementById('locate-btn').addEventListener('click', () => {
+            map.locate({setView: true, maxZoom: 16});
+        });
+
+        map.on('locationfound', (e) => {
+            const radius = e.accuracy / 2;
+            L.circle(e.latlng, radius).addTo(map);
+            addMarker(e.latlng.lat, e.latlng.lng, `<b>Your Location</b><br>Within ${radius.toFixed(0)} meters`);
+        });
+
+        map.on('locationerror', (e) => {
+            alert("Location access denied or unavailable.");
+        });
+
+        // Clear Markers Feature
+        document.getElementById('clear-markers').addEventListener('click', () => {
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+            markerLog.innerHTML = '<div class="coords-item" style="color: #64748b; justify-content: center;">No markers added yet</div>';
+            markerCountDisp.innerText = '0';
+        });
+
+        // --- Data Sync from React ---
+        window.addEventListener('message', (event) => {
+            if (event.data?.type === 'SYNC_DATA') {
+                const { requests, resources, selectedRequestId, tempMarker } = event.data;
+                
+                // Clear existing markers
+                markers.forEach(m => map.removeLayer(m));
+                markers = [];
+                
+                // Draw Requests
+                if (requests) {
+                    requests.forEach(req => {
+                        // Skip rendering resolved incidents
+                        if (req.status === 'Resolved') return;
+
+                        let color = '#eab308'; // Default Medium
+                        if (req.severity === 'Critical') color = '#ef4444';
+                        else if (req.severity === 'High') color = '#f97316';
+                        
+                        const isSelected = req.id === selectedRequestId;
+                        
+                        const icon = L.divIcon({
+                            className: 'custom-map-marker',
+                            html: `<div style="background-color: ${color}; width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: ${isSelected ? '3px solid white' : '1px solid rgba(255,255,255,0.5)'}; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transform: ${isSelected ? 'scale(1.2)' : 'scale(1)'}; transition: transform 0.2s;">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                   </div>`,
+                            iconSize: [32, 32],
+                            iconAnchor: [16, 32]
+                        });
+
+                        const popupHtml = `
+                            <div style="padding: 5px;">
+                                <strong style="color: ${color};">${req.disasterType}</strong><br/>
+                                <span style="font-size: 0.8rem; color: #64748b;">ID: ${req.id}</span><br/>
+                                <span style="font-size: 0.8rem;">Status: <b>${req.status}</b></span><br/>
+                                <span style="font-size: 0.8rem;">Needs: ${req.resourceNeeded}</span>
+                            </div>
+                        `;
+
+                        const marker = L.marker([req.location.lat, req.location.lng], { icon })
+                            .addTo(map)
+                            .bindPopup(popupHtml);
+                            
+                        marker.on('click', () => {
+                            if (window.parent !== window) {
+                                window.parent.postMessage({ type: 'MARKER_CLICK', id: req.id, markerType: 'req' }, '*');
+                            }
+                        });
+                        
+                        markers.push(marker);
+                    });
+                }
+                
+                // Draw Resources
+                if (resources) {
+                    resources.forEach(res => {
+                        const icon = L.divIcon({
+                            className: 'custom-resource-marker',
+                            html: `<div style="background-color: #3b82f6; width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: 2px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                                   </div>`,
+                            iconSize: [24, 24],
+                            iconAnchor: [12, 12]
+                        });
+
+                        const popupHtml = `
+                            <div style="padding: 5px;">
+                                <strong style="color: #3b82f6;">${res.name}</strong><br/>
+                                <span style="font-size: 0.8rem;">Type: ${res.type}</span><br/>
+                                <span style="font-size: 0.8rem;">Status: <b>${res.status}</b></span>
+                            </div>
+                        `;
+
+                        const marker = L.marker([res.location.lat, res.location.lng], { icon })
+                            .addTo(map)
+                            .bindPopup(popupHtml);
+                            
+                        marker.on('click', () => {
+                            if (window.parent !== window) {
+                                window.parent.postMessage({ type: 'MARKER_CLICK', id: res.id, markerType: 'res' }, '*');
+                            }
+                        });
+                            
+                        markers.push(marker);
+                    });
+                }
+                
+                // Draw Temp Marker
+                if (tempMarker) {
+                    const icon = L.divIcon({
+                        className: 'custom-temp-marker',
+                        html: `<div style="color: #06b6d4; filter: drop-shadow(0 0 10px rgba(6,182,212,0.8)); animation: bounce 1s infinite alternate;">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3" fill="white"/></svg>
+                               </div>
+                               <style>@keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }</style>`,
+                        iconSize: [40, 40],
+                        iconAnchor: [20, 40]
+                    });
+                    const tm = L.marker([tempMarker.lat, tempMarker.lng], { icon }).addTo(map);
+                    markers.push(tm);
+                }
+                
+                markerCountDisp.innerText = markers.length;
+                if(markerLog.innerText.includes("No markers added yet") && markers.length > 0) {
+                     markerLog.innerHTML = `<div class="coords-item" style="color: #10b981; justify-content: center;">Synced ${markers.length} live data points</div>`;
+                }
+            }
+        });
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            map.invalidateSize();
+        });
+
+    </script>
+</body>
+</html>
