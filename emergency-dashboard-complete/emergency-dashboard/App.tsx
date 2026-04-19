@@ -7,6 +7,7 @@ import { calculatePriorityScore } from './services/allocationEngine';
 import { initializeSeedData } from './services/seedData';
 import { authService } from './services/authService';
 import { AuthPage } from './components/AuthPage';
+import { LandingPage } from './components/LandingPage';
 import { Sidebar } from './components/Sidebar';
 import { EmergencyPanel } from './components/EmergencyPanel';
 import { InventoryPanel } from './components/InventoryPanel';
@@ -24,6 +25,7 @@ import { getBestResource } from './services/allocationEngine';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLanding, setShowLanding] = useState(true);
   const [role, setRole] = useState<UserRole>('guest');
   const [activeView, setActiveView] = useState<ActiveView>('home');
   const [requests, setRequests] = useState<EmergencyRequest[]>([]);
@@ -63,6 +65,7 @@ const App: React.FC = () => {
     if (currentUser) {
       setIsAuthenticated(true);
       setRole(currentUser.role);
+      setShowLanding(false);
     }
     
     let dbReq = DataService.getRequests();
@@ -211,6 +214,9 @@ const App: React.FC = () => {
   }, [role, requests, resources, handleAllocate]);
 
   if (!isAuthenticated) {
+    if (showLanding) {
+      return <LandingPage onGetStarted={() => setShowLanding(false)} />;
+    }
     return <AuthPage onAuthSuccess={handleLogin} />;
   }
 

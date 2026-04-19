@@ -32,7 +32,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView, rol
       </button>
       <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform fixed lg:relative z-40 w-64 h-screen bg-slate-950/80 backdrop-blur-xl border-r border-white/5 flex flex-col`}>
         <div className="p-6 border-b border-white/5">
-          <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 tracking-tight">DPI-4</h1>
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" alt="RAD" className="w-8 h-8 object-contain rounded-lg bg-white" />
+            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 tracking-tight">RAD</h1>
+          </div>
           <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mt-2 font-bold">{role}</p>
         </div>
         <nav className="flex-1 p-4 space-y-2">

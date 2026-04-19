@@ -92,11 +92,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
           <div className="hidden lg:block text-white space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Shield className="w-9 h-9 text-white" />
-                </div>
+                <img src="/logo.jpg" alt="RAD" className="w-16 h-16 object-contain rounded-2xl shadow-2xl bg-white" />
                 <div>
-                  <h1 className="text-4xl font-black tracking-tight">DPI-4</h1>
+                  <h1 className="text-4xl font-black tracking-tight">RAD</h1>
                   <p className="text-blue-300 text-sm font-medium">Emergency Response System</p>
                 </div>
               </div>
@@ -146,11 +144,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
             {/* Mobile Header */}
             <div className="lg:hidden mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <Shield className="w-7 h-7 text-white" />
-                </div>
+                <img src="/logo.jpg" alt="RAD" className="w-12 h-12 object-contain rounded-xl bg-white" />
                 <div>
-                  <h1 className="text-2xl font-black text-slate-900">DPI-4</h1>
+                  <h1 className="text-2xl font-black text-slate-900">RAD</h1>
                   <p className="text-blue-600 text-xs font-medium">Emergency Response</p>
                 </div>
               </div>
