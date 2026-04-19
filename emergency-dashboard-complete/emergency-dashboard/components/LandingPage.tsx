@@ -190,7 +190,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
       </div>
 
       {/* Section 4: Final / CTA */}
-      <div className={`fixed inset-0 flex flex-col items-center justify-center z-30 bg-slate-950/80 backdrop-blur-2xl transition-all duration-1000 ${scrollProgress >= 0.98 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+      <div className={`fixed inset-0 flex flex-col items-center justify-center z-30 bg-transparent transition-all duration-1000 ${scrollProgress >= 0.98 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
         <img src="/logo.jpg" alt="RAD" className="w-24 h-24 object-contain rounded-3xl shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white mb-10" />
         <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-center">Ready to <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Make an Impact?</span></h2>
         <button
