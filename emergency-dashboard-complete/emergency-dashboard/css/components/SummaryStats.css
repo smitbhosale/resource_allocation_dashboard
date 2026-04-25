@@ -1,0 +1,70 @@
+/* Styles for SummaryStats component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.summarystats-element-1 {
+  @apply flex items-center gap-4 px-6 py-4;
+}
+
+.summarystats-element-2 {
+  @apply flex items-center gap-3 px-4 py-2 bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-slate-800/50 transition-colors;
+}
+
+.summarystats-element-3 {
+  @apply w-5 h-5 text-red-500;
+}
+
+.summarystats-element-4 {
+  @apply text-2xl font-black text-white leading-none;
+}
+
+.summarystats-element-5 {
+  @apply text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1;
+}
+
+.summarystats-element-6 {
+  @apply flex items-center gap-3 px-4 py-2 bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-slate-800/50 transition-colors;
+}
+
+.summarystats-element-7 {
+  @apply w-5 h-5 text-blue-500;
+}
+
+.summarystats-element-8 {
+  @apply text-2xl font-black text-white leading-none;
+}
+
+.summarystats-element-9 {
+  @apply text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1;
+}
+
+.summarystats-element-10 {
+  @apply flex items-center gap-3 px-4 py-2 bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-slate-800/50 transition-colors;
+}
+
+.summarystats-element-11 {
+  @apply w-5 h-5 text-green-500;
+}
+
+.summarystats-element-12 {
+  @apply text-2xl font-black text-white leading-none;
+}
+
+.summarystats-element-13 {
+  @apply text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1;
+}
+
+.summarystats-element-14 {
+  @apply flex items-center gap-3 px-4 py-2 bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-slate-800/50 transition-colors;
+}
+
+.summarystats-element-15 {
+  @apply w-5 h-5 text-purple-500;
+}
+
+.summarystats-element-16 {
+  @apply text-sm font-black text-white leading-none;
+}
+
+.summarystats-element-17 {
+  @apply text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1;
+}

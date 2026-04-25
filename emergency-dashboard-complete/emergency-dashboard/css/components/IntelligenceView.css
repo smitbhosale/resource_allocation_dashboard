@@ -1,0 +1,102 @@
+/* Styles for IntelligenceView component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.intelligenceview-element-1 {
+  @apply flex-1 p-6 overflow-y-auto bg-slate-950;
+}
+
+.intelligenceview-element-2 {
+  @apply max-w-6xl mx-auto space-y-6;
+}
+
+.intelligenceview-element-3 {
+  @apply flex items-center gap-3 mb-6;
+}
+
+.intelligenceview-element-4 {
+  @apply w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center;
+}
+
+.intelligenceview-element-5 {
+  @apply w-7 h-7 text-purple-400;
+}
+
+.intelligenceview-element-6 {
+  @apply text-2xl font-black text-white;
+}
+
+.intelligenceview-element-7 {
+  @apply text-sm text-slate-400;
+}
+
+.intelligenceview-element-8 {
+  @apply grid md:grid-cols-2 gap-6;
+}
+
+.intelligenceview-element-9 {
+  @apply bg-slate-900 border border-slate-800 rounded-2xl p-6;
+}
+
+.intelligenceview-element-10 {
+  @apply flex items-center gap-2 font-bold text-white mb-4;
+}
+
+.intelligenceview-element-11 {
+  @apply w-5 h-5 text-blue-400;
+}
+
+.intelligenceview-element-12 {
+  @apply space-y-3;
+}
+
+.intelligenceview-element-13 {
+  @apply p-4 bg-slate-800 rounded-xl flex items-center justify-between;
+}
+
+.intelligenceview-element-14 {
+  @apply font-bold text-white;
+}
+
+.intelligenceview-element-15 {
+  @apply text-xs text-slate-400;
+}
+
+.intelligenceview-element-16 {
+  @apply bg-slate-900 border border-slate-800 rounded-2xl p-6;
+}
+
+.intelligenceview-element-17 {
+  @apply flex items-center gap-2 font-bold text-white mb-4;
+}
+
+.intelligenceview-element-18 {
+  @apply w-5 h-5 text-green-400;
+}
+
+.intelligenceview-element-19 {
+  @apply space-y-3;
+}
+
+.intelligenceview-element-20 {
+  @apply p-4 bg-blue-950/30 border border-blue-800 rounded-xl;
+}
+
+.intelligenceview-element-21 {
+  @apply text-sm text-blue-300 mb-2;
+}
+
+.intelligenceview-element-22 {
+  @apply text-xs text-slate-500;
+}
+
+.intelligenceview-element-23 {
+  @apply p-4 bg-blue-950/30 border border-blue-800 rounded-xl;
+}
+
+.intelligenceview-element-24 {
+  @apply text-sm text-blue-300 mb-2;
+}
+
+.intelligenceview-element-25 {
+  @apply text-xs text-slate-500;
+}

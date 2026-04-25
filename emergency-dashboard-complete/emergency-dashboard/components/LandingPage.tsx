@@ -1,3 +1,4 @@
+import '../css/components/LandingPage.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Shield, Map, Users } from 'lucide-react';
 
@@ -6,7 +7,7 @@ interface LandingPageProps {
 }
 
 // Ensure you have at least this number of frames in public/video (e.g. ezgif-frame-001.jpg, ...)
-const TOTAL_FRAMES = 31; 
+const TOTAL_FRAMES = 184; 
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,6 +24,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
         const img = new Image();
         const frameNumber = i.toString().padStart(3, '0');
         img.src = `/video/ezgif-frame-${frameNumber}.jpg`;
+        // Pre-decode makes the animation perfectly smooth when the user starts scrolling
+        img.decode().catch(() => {});
         images.push(img);
     }
     imagesRef.current = images;
@@ -58,7 +61,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           );
 
           const canvas = canvasRef.current;
-          const ctx = canvas?.getContext('2d');
+          const ctx = canvas?.getContext('2d', { alpha: false });
           const img = imagesRef.current[frameIndex];
           
           if (canvas && ctx && img && img.complete) {
@@ -81,7 +84,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             const frameIndex = Math.floor(currentScrollRef.current * TOTAL_FRAMES);
             const img = imagesRef.current[Math.min(TOTAL_FRAMES - 1, Math.max(0, frameIndex))];
             if (img && img.complete) {
-                const ctx = canvasRef.current.getContext('2d');
+                const ctx = canvasRef.current.getContext('2d', { alpha: false });
                 if (ctx) drawCover(ctx, img, canvasRef.current.width, canvasRef.current.height, currentScrollRef.current);
             }
         }
@@ -138,61 +141,61 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
   };
 
   return (
-    <div ref={containerRef} className="relative bg-slate-950 min-h-[400vh] text-white overflow-x-hidden">
+    <div ref={containerRef} className="landingpage-element-1">
       {/* Background fixed canvas */}
-      <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-slate-950/10 z-10" />
-        <canvas ref={canvasRef} className="block w-full h-full object-cover z-0" />
+      <div className="landingpage-element-2">
+        <div className="landingpage-element-3" />
+        <canvas ref={canvasRef} className="landingpage-element-4" />
       </div>
 
       {/* Intro Header */}
       <div className={`fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center z-20 transition-all duration-1000 ${scrollProgress > 0.05 ? 'opacity-0 translate-y-[-20px] pointer-events-none' : 'opacity-100 translate-y-0'}`}>
-        <img src="/logo.jpg" alt="RAD" className="w-24 h-24 object-contain rounded-2xl shadow-2xl bg-white mb-8" />
-        <h1 className="text-6xl md:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-6">RAD</h1>
-        <p className="text-xl md:text-2xl text-blue-200 font-medium tracking-wide">Emergency Response Network</p>
-        <div className="absolute bottom-10 animate-bounce flex flex-col items-center gap-2 text-slate-400">
-           <span className="text-xs font-bold uppercase tracking-widest">Scroll to explore</span>
-           <div className="w-px h-16 bg-gradient-to-b from-slate-400 to-transparent" />
+        <img src="/logo.jpg" alt="RAD" className="landingpage-element-5" />
+        <h1 className="landingpage-element-6">RAD</h1>
+        <p className="landingpage-element-7">Emergency Response Network</p>
+        <div className="landingpage-element-8">
+           <span className="landingpage-element-9">Scroll to explore</span>
+           <div className="landingpage-element-10" />
         </div>
       </div>
 
       {/* Section 1: Left */}
       <div className={`fixed inset-0 flex items-center justify-start px-8 md:px-24 xl:px-48 z-20 transition-all duration-700 ${scrollProgress > 0.15 && scrollProgress < 0.4 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20 pointer-events-none'}`}>
-        <div className="max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl">
+        <div className="landingpage-element-11">
           <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center border border-blue-500/50 mb-8 shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]">
-            <Shield className="w-8 h-8 text-blue-400" />
+            <Shield className="landingpage-element-12" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Real-time disaster <br/><span className="text-blue-400">reporting by citizens</span></h2>
-          <p className="text-xl text-slate-300 leading-relaxed">Empower communities to quickly alert authorities. Secure, fast, and intelligent reporting connected directly to responders.</p>
+          <h2 className="landingpage-element-13">Real-time disaster <br/><span className="landingpage-element-14">reporting by citizens</span></h2>
+          <p className="landingpage-element-15">Empower communities to quickly alert authorities. Secure, fast, and intelligent reporting connected directly to responders.</p>
         </div>
       </div>
 
       {/* Section 2: Right */}
       <div className={`fixed inset-0 flex items-center justify-end px-8 md:px-24 xl:px-48 z-20 transition-all duration-700 ${scrollProgress > 0.45 && scrollProgress < 0.7 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20 pointer-events-none'}`}>
-        <div className="max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl text-right flex flex-col items-end">
+        <div className="landingpage-element-16">
           <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center border border-purple-500/50 mb-8 shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)]">
-             <Map className="w-8 h-8 text-purple-400" />
+             <Map className="landingpage-element-17" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Smart resource allocation <br/><span className="text-purple-400">using map tracking</span></h2>
-          <p className="text-xl text-slate-300 leading-relaxed">AI-driven predictive deployments ensure critical supplies reach affected areas dynamically without resource bottlenecks.</p>
+          <h2 className="landingpage-element-18">Smart resource allocation <br/><span className="landingpage-element-19">using map tracking</span></h2>
+          <p className="landingpage-element-20">AI-driven predictive deployments ensure critical supplies reach affected areas dynamically without resource bottlenecks.</p>
         </div>
       </div>
 
       {/* Section 3: Left */}
       <div className={`fixed inset-0 flex items-center justify-start px-8 md:px-24 xl:px-48 z-20 transition-all duration-700 ${scrollProgress > 0.75 && scrollProgress < 0.95 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20 pointer-events-none'}`}>
-        <div className="max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl">
+        <div className="landingpage-element-21">
           <div className="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center border border-emerald-500/50 mb-8 shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
-            <Users className="w-8 h-8 text-emerald-400" />
+            <Users className="landingpage-element-22" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Efficient coordination <br/><span className="text-emerald-400">with responders</span></h2>
-          <p className="text-xl text-slate-300 leading-relaxed">Seamless integration between citizens, civil servants, and centralized authorities forming an impenetrable defense.</p>
+          <h2 className="landingpage-element-23">Efficient coordination <br/><span className="landingpage-element-24">with responders</span></h2>
+          <p className="landingpage-element-25">Seamless integration between citizens, civil servants, and centralized authorities forming an impenetrable defense.</p>
         </div>
       </div>
 
       {/* Section 4: Final / CTA */}
       <div className={`fixed inset-0 flex flex-col items-center justify-center z-30 bg-transparent transition-all duration-1000 ${scrollProgress >= 0.98 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
         <img src="/logo.jpg" alt="RAD" className="w-24 h-24 object-contain rounded-3xl shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white mb-10" />
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-center">Ready to <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Make an Impact?</span></h2>
+        <h2 className="landingpage-element-26">Ready to <br/><span className="landingpage-element-27">Make an Impact?</span></h2>
         <button
           onClick={() => {
             window.scrollTo(0, 0); // reset scroll
@@ -200,9 +203,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           }}
           className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-2xl font-black text-2xl shadow-[0_0_50px_-5px_rgba(59,130,246,0.6)] hover:shadow-[0_0_70px_-5px_rgba(59,130,246,0.8)] transition-all overflow-hidden flex items-center gap-4"
         >
-          <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-          <span className="relative z-10 text-white">Get Started</span>
-          <ArrowRight className="w-8 h-8 relative z-10 text-white group-hover:translate-x-2 transition-transform" />
+          <div className="landingpage-element-28" />
+          <span className="landingpage-element-29">Get Started</span>
+          <ArrowRight className="landingpage-element-30" />
         </button>
       </div>
     </div>

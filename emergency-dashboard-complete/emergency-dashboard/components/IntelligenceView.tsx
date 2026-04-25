@@ -1,3 +1,4 @@
+import '../css/components/IntelligenceView.css';
 import React from 'react';
 import { EmergencyRequest, ResourceUnit } from '../types';
 import { Brain, TrendingUp, MapPin } from 'lucide-react';
@@ -14,31 +15,54 @@ export const IntelligenceView: React.FC<IntelligenceViewProps> = ({ requests }) 
     { area: 'Tech Corridor', riskLevel: 'Low', count: Math.floor(Math.random() * 3) }
   ];
   
+  const generateRecommendations = () => {
+    const pending = requests.filter(r => r.status === 'Pending').sort((a, b) => b.priorityScore - a.priorityScore);
+    if (pending.length === 0) {
+      return [{ id: 'none', text: 'All clear. No critical active emergencies requiring immediate AI allocation.', confidence: 99 }];
+    }
+    
+    return pending.slice(0, 3).map(req => {
+      let text = `AI detected critical ${req.disasterType}. Recommend dispatching ${req.resourceNeeded.replace('_', ' ')} unit immediately to coordinate.`;
+      
+      if (req.description && req.description !== 'No description provided.') {
+         text = `"${req.description}" -> Immediate AI recommendation: Dispatch ${req.resourceNeeded.replace('_', ' ')}.`;
+      }
+      
+      return { 
+        id: req.id,
+        text, 
+        confidence: Math.max(Math.min(Math.round(req.priorityScore + (Math.random() * 15)), 99), 75) 
+      };
+    });
+  };
+
+  const dynamicRecommendations = generateRecommendations();
+
   return (
-    <div className="flex-1 p-6 overflow-y-auto bg-slate-950">
-      <div className="max-w-6xl mx-auto space-y-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-            <Brain className="w-7 h-7 text-purple-400" />
+    <div className="intelligenceview-element-1">
+      <div className="intelligenceview-element-2">
+        <div className="intelligenceview-element-3">
+          <div className="intelligenceview-element-4">
+            <Brain className="intelligenceview-element-5" />
           </div>
           <div>
-            <h2 className="text-2xl font-black text-white">AI Intelligence</h2>
-            <p className="text-sm text-slate-400">Predictive analytics and recommendations</p>
+            <h2 className="intelligenceview-element-6">AI Intelligence</h2>
+            <p className="intelligenceview-element-7">Predictive analytics and recommendations</p>
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h3 className="flex items-center gap-2 font-bold text-white mb-4">
-              <MapPin className="w-5 h-5 text-blue-400" />
+        <div className="intelligenceview-element-8">
+          <div className="intelligenceview-element-9">
+            <h3 className="intelligenceview-element-10">
+              <MapPin className="intelligenceview-element-11" />
               Risk Hotspots
             </h3>
-            <div className="space-y-3">
+            <div className="intelligenceview-element-12">
               {hotspots.map(spot => (
-                <div key={spot.area} className="p-4 bg-slate-800 rounded-xl flex items-center justify-between">
+                <div key={spot.area} className="intelligenceview-element-13">
                   <div>
-                    <div className="font-bold text-white">{spot.area}</div>
-                    <div className="text-xs text-slate-400">{spot.count} active incidents</div>
+                    <div className="intelligenceview-element-14">{spot.area}</div>
+                    <div className="intelligenceview-element-15">{spot.count} active incidents</div>
                   </div>
                   <span className={`px-3 py-1 rounded-lg text-xs font-bold ${spot.riskLevel === 'High' ? 'bg-red-500/20 text-red-400' : spot.riskLevel === 'Medium' ? 'bg-orange-500/20 text-orange-400' : 'bg-green-500/20 text-green-400'}`}>
                     {spot.riskLevel}
@@ -48,20 +72,18 @@ export const IntelligenceView: React.FC<IntelligenceViewProps> = ({ requests }) 
             </div>
           </div>
           
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h3 className="flex items-center gap-2 font-bold text-white mb-4">
-              <TrendingUp className="w-5 h-5 text-green-400" />
+          <div className="intelligenceview-element-16">
+            <h3 className="intelligenceview-element-17">
+              <TrendingUp className="intelligenceview-element-18" />
               AI Recommendations
             </h3>
-            <div className="space-y-3">
-              <div className="p-4 bg-blue-950/30 border border-blue-800 rounded-xl">
-                <p className="text-sm text-blue-300 mb-2">Deploy additional rescue units to Downtown Metro area</p>
-                <span className="text-xs text-slate-500">Confidence: 87%</span>
-              </div>
-              <div className="p-4 bg-blue-950/30 border border-blue-800 rounded-xl">
-                <p className="text-sm text-blue-300 mb-2">Preposition medical teams near West Coastal before evening rush</p>
-                <span className="text-xs text-slate-500">Confidence: 92%</span>
-              </div>
+            <div className="intelligenceview-element-19">
+              {dynamicRecommendations.map((rec, i) => (
+                <div key={rec.id + i} className="intelligenceview-element-20">
+                  <p className="intelligenceview-element-21">{rec.text}</p>
+                  <span className="intelligenceview-element-22">Confidence: {rec.confidence}%</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

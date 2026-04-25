@@ -1,3 +1,4 @@
+import '../css/components/AuthPage.css';
 import React, { useState } from 'react';
 import { UserRole } from '../types';
 import { authService } from '../services/authService';
@@ -79,151 +80,151 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4 sm:p-6">
+    <div className="authpage-element-1">
       {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="authpage-element-2">
+        <div className="authpage-element-3"></div>
+        <div className="authpage-element-4" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="w-full max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+      <div className="authpage-element-5">
+        <div className="authpage-element-6">
           {/* Left Side - Branding */}
-          <div className="hidden lg:block text-white space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 mb-6">
-                <img src="/logo.jpg" alt="RAD" className="w-16 h-16 object-contain rounded-2xl shadow-2xl bg-white" />
+          <div className="authpage-element-7">
+            <div className="authpage-element-8">
+              <div className="authpage-element-9">
+                <img src="/logo.jpg" alt="RAD" className="authpage-element-10" />
                 <div>
-                  <h1 className="text-4xl font-black tracking-tight">RAD</h1>
-                  <p className="text-blue-300 text-sm font-medium">Emergency Response System</p>
+                  <h1 className="authpage-element-11">RAD</h1>
+                  <p className="authpage-element-12">Emergency Response System</p>
                 </div>
               </div>
               
-              <h2 className="text-5xl font-black leading-tight bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+              <h2 className="authpage-element-13">
                 Save Lives Through Smart Resource Allocation
               </h2>
               
-              <p className="text-xl text-slate-300 leading-relaxed">
+              <p className="authpage-element-14">
                 Real-time disaster management platform connecting citizens, authorities, and first responders for faster emergency response.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                <div className="text-3xl font-black text-blue-400">24/7</div>
-                <div className="text-sm text-slate-300 mt-1">Active Monitoring</div>
+            <div className="authpage-element-15">
+              <div className="authpage-element-16">
+                <div className="authpage-element-17">24/7</div>
+                <div className="authpage-element-18">Active Monitoring</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                <div className="text-3xl font-black text-green-400">98%</div>
-                <div className="text-sm text-slate-300 mt-1">Response Rate</div>
+              <div className="authpage-element-19">
+                <div className="authpage-element-20">98%</div>
+                <div className="authpage-element-21">Response Rate</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                <div className="text-3xl font-black text-purple-400">&lt;5m</div>
-                <div className="text-sm text-slate-300 mt-1">Avg Response</div>
+              <div className="authpage-element-22">
+                <div className="authpage-element-23">&lt;5m</div>
+                <div className="authpage-element-24">Avg Response</div>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="authpage-element-25">
+              <div className="authpage-element-26">
+                <CheckCircle className="authpage-element-27" />
                 <span>AI-powered resource allocation</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <div className="authpage-element-28">
+                <CheckCircle className="authpage-element-29" />
                 <span>Real-time incident tracking</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <div className="authpage-element-30">
+                <CheckCircle className="authpage-element-31" />
                 <span>Offline-first architecture</span>
               </div>
             </div>
           </div>
 
           {/* Right Side - Auth Form */}
-          <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-10">
+          <div className="authpage-element-32">
             {/* Mobile Header */}
-            <div className="lg:hidden mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <img src="/logo.jpg" alt="RAD" className="w-12 h-12 object-contain rounded-xl bg-white" />
+            <div className="authpage-element-33">
+              <div className="authpage-element-34">
+                <img src="/logo.jpg" alt="RAD" className="authpage-element-35" />
                 <div>
-                  <h1 className="text-2xl font-black text-slate-900">RAD</h1>
-                  <p className="text-blue-600 text-xs font-medium">Emergency Response</p>
+                  <h1 className="authpage-element-36">RAD</h1>
+                  <p className="authpage-element-37">Emergency Response</p>
                 </div>
               </div>
             </div>
 
-            <div className="mb-8">
-              <h3 className="text-3xl font-black text-slate-900 mb-2">
+            <div className="authpage-element-38">
+              <h3 className="authpage-element-39">
                 {isLogin ? 'Welcome Back' : 'Create Account'}
               </h3>
-              <p className="text-slate-500">
+              <p className="authpage-element-40">
                 {isLogin ? 'Sign in to access your dashboard' : 'Join the emergency response network'}
               </p>
             </div>
 
             {/* Alerts */}
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+              <div className="authpage-element-41">
                 <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-800 font-medium">{error}</p>
+                <p className="authpage-element-42">{error}</p>
               </div>
             )}
 
             {success && (
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3">
+              <div className="authpage-element-43">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-green-800 font-medium">{success}</p>
+                <p className="authpage-element-44">{success}</p>
               </div>
             )}
 
             {/* Quick Login Demo Accounts */}
             {isLogin && (
-              <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                <p className="text-xs font-bold text-blue-900 mb-3">DEMO ACCOUNTS (Click to login):</p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="authpage-element-45">
+                <p className="authpage-element-46">DEMO ACCOUNTS (Click to login):</p>
+                <div className="authpage-element-47">
                   <button
                     type="button"
                     onClick={() => quickLogin('citizen@example.com', 'citizen123')}
-                    className="p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all group text-left"
+                    className="group authpage-element-48"
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <Smartphone className="w-4 h-4 text-blue-600" />
-                      <span className="text-xs font-bold text-slate-900">Citizen</span>
+                    <div className="authpage-element-49">
+                      <Smartphone className="authpage-element-50" />
+                      <span className="authpage-element-51">Citizen</span>
                     </div>
-                    <p className="text-[10px] text-slate-500">citizen@example.com</p>
+                    <p className="authpage-element-52">citizen@example.com</p>
                   </button>
                   <button
                     type="button"
                     onClick={() => quickLogin('admin@emergency.gov', 'admin123')}
-                    className="p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all group text-left"
+                    className="group authpage-element-53"
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <Briefcase className="w-4 h-4 text-blue-600" />
-                      <span className="text-xs font-bold text-slate-900">Authority</span>
+                    <div className="authpage-element-54">
+                      <Briefcase className="authpage-element-55" />
+                      <span className="authpage-element-56">Authority</span>
                     </div>
-                    <p className="text-[10px] text-slate-500">admin@emergency.gov</p>
+                    <p className="authpage-element-57">admin@emergency.gov</p>
                   </button>
                   <button
                     type="button"
                     onClick={() => quickLogin('responder@emergency.gov', 'responder123')}
-                    className="p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all group text-left"
+                    className="group authpage-element-58"
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <Siren className="w-4 h-4 text-blue-600" />
-                      <span className="text-xs font-bold text-slate-900">Responder</span>
+                    <div className="authpage-element-59">
+                      <Siren className="authpage-element-60" />
+                      <span className="authpage-element-61">Responder</span>
                     </div>
-                    <p className="text-[10px] text-slate-500">responder@emergency.gov</p>
+                    <p className="authpage-element-62">responder@emergency.gov</p>
                   </button>
                 </div>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="authpage-element-63">
               {!isLogin && (
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <label className="authpage-element-64">Full Name</label>
+                  <div className="authpage-element-65">
+                    <User className="authpage-element-66" />
                     <input
                       type="text"
                       value={formData.name}
@@ -237,9 +238,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
               )}
 
               <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <label className="authpage-element-67">Email Address</label>
+                <div className="authpage-element-68">
+                  <Mail className="authpage-element-69" />
                   <input
                     type="email"
                     value={formData.email}
@@ -253,9 +254,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
 
               {!isLogin && (
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                  <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <label className="authpage-element-70">Phone Number</label>
+                  <div className="authpage-element-71">
+                    <Phone className="authpage-element-72" />
                     <input
                       type="tel"
                       value={formData.phone}
@@ -269,9 +270,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
               )}
 
               <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <label className="authpage-element-73">Password</label>
+                <div className="authpage-element-74">
+                  <Lock className="authpage-element-75" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={formData.password}
@@ -283,17 +284,17 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                    className="authpage-element-76"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <EyeOff className="authpage-element-77" /> : <Eye className="authpage-element-78" />}
                   </button>
                 </div>
               </div>
 
               {!isLogin && (
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Register As</label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <label className="authpage-element-79">Register As</label>
+                  <div className="authpage-element-80">
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, role: 'citizen' })}
@@ -304,7 +305,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
                       }`}
                     >
                       <Smartphone className={`w-6 h-6 mx-auto mb-2 ${formData.role === 'citizen' ? 'text-blue-600' : 'text-slate-400'}`} />
-                      <div className="text-sm font-bold text-slate-900">Citizen</div>
+                      <div className="authpage-element-81">Citizen</div>
                     </button>
                     <button
                       type="button"
@@ -316,7 +317,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
                       }`}
                     >
                       <Siren className={`w-6 h-6 mx-auto mb-2 ${formData.role === 'civil_servant' ? 'text-blue-600' : 'text-slate-400'}`} />
-                      <div className="text-sm font-bold text-slate-900">Responder</div>
+                      <div className="authpage-element-82">Responder</div>
                     </button>
                   </div>
                 </div>
@@ -325,11 +326,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="authpage-element-83"
               >
                 {loading ? (
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <div className="authpage-element-84">
+                    <div className="authpage-element-85"></div>
                     <span>Please wait...</span>
                   </div>
                 ) : (
@@ -338,21 +339,21 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess }) => {
               </button>
             </form>
 
-            <div className="mt-6 text-center">
+            <div className="authpage-element-86">
               <button
                 onClick={() => {
                   setIsLogin(!isLogin);
                   setError('');
                   setSuccess('');
                 }}
-                className="text-blue-600 hover:text-blue-700 font-bold text-sm"
+                className="authpage-element-87"
               >
                 {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
               </button>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <p className="text-xs text-slate-500 text-center">
+            <div className="authpage-element-88">
+              <p className="authpage-element-89">
                 By continuing, you agree to our Terms of Service and Privacy Policy
               </p>
             </div>

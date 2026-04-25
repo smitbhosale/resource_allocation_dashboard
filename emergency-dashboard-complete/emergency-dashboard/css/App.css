@@ -1,0 +1,114 @@
+/* Styles for App component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.app-element-1 {
+  @apply flex-1 flex flex-col min-w-0;
+}
+
+.app-element-2 {
+  @apply bg-orange-500 text-white px-4 py-2 flex items-center justify-center gap-2 text-sm font-bold animate-pulse;
+}
+
+.app-element-3 {
+  @apply w-4 h-4;
+}
+
+.app-element-4 {
+  @apply flex-1 flex flex-col md:flex-row min-h-0;
+}
+
+.app-element-5 {
+  @apply flex-1 relative flex flex-col;
+}
+
+.app-element-6 {
+  @apply flex items-center justify-between bg-slate-900/50 backdrop-blur-md border-b border-white/5 pr-4;
+}
+
+.app-element-7 {
+  @apply absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity;
+}
+
+.app-element-8 {
+  @apply w-3 h-3 text-blue-400 group-hover:text-blue-300 transition-colors;
+}
+
+.app-element-9 {
+  @apply flex-1 relative;
+}
+
+.app-element-10 {
+  @apply absolute bottom-6 left-6 right-6 z-30;
+}
+
+.app-element-11 {
+  @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent;
+}
+
+.app-element-12 {
+  @apply absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black/40 to-transparent;
+}
+
+.app-element-13 {
+  @apply flex items-center gap-4 flex-1;
+}
+
+.app-element-14 {
+  @apply min-w-0;
+}
+
+.app-element-15 {
+  @apply font-bold text-white truncate;
+}
+
+.app-element-16 {
+  @apply text-[10px] text-slate-500 font-mono ml-2;
+}
+
+.app-element-17 {
+  @apply text-xs text-slate-400 max-w-md truncate;
+}
+
+.app-element-18 {
+  @apply flex flex-col gap-1 items-end border-l border-slate-800 pl-6 h-full justify-center;
+}
+
+.app-element-19 {
+  @apply flex items-center gap-2 text-blue-400 text-xs font-bold;
+}
+
+.app-element-20 {
+  @apply w-4 h-4;
+}
+
+.app-element-21 {
+  @apply flex items-center gap-2;
+}
+
+.app-element-22 {
+  @apply text-[10px] uppercase font-black tracking-widest text-slate-400;
+}
+
+.app-element-23 {
+  @apply flex gap-2 border-l border-slate-800 pl-6 h-full items-center;
+}
+
+.app-element-24 {
+  @apply w-4 h-4;
+}
+
+.app-element-25 {
+  @apply w-4 h-4;
+}
+
+.app-element-26 {
+  @apply w-4 h-4;
+}
+
+.app-element-27 {
+  @apply hidden lg:block w-96 border-l border-white/5 bg-slate-950/30 backdrop-blur-sm;
+}
+
+.app-element-28 {
+  @apply flex-1 p-0 flex justify-center;
+}

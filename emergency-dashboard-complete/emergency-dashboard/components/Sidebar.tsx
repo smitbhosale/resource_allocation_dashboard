@@ -1,3 +1,4 @@
+import '../css/components/Sidebar.css';
 import React from 'react';
 import { ActiveView, UserRole } from '../types';
 import { Home, FileText, Package, Brain, BookOpen, CheckSquare, LogOut, Menu, X, Bot } from 'lucide-react';
@@ -27,18 +28,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView, rol
 
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 rounded-lg">
-        {isOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
+      <button onClick={() => setIsOpen(!isOpen)} className="sidebar-element-1">
+        {isOpen ? <X className="sidebar-element-2" /> : <Menu className="sidebar-element-3" />}
       </button>
       <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform fixed lg:relative z-40 w-64 h-screen bg-slate-950/80 backdrop-blur-xl border-r border-white/5 flex flex-col`}>
-        <div className="p-6 border-b border-white/5">
-          <div className="flex items-center gap-3">
-            <img src="/logo.jpg" alt="RAD" className="w-8 h-8 object-contain rounded-lg bg-white" />
-            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 tracking-tight">RAD</h1>
+        <div className="sidebar-element-4">
+          <div className="sidebar-element-5">
+            <img src="/logo.jpg" alt="RAD" className="sidebar-element-6" />
+            <h1 className="sidebar-element-7">RAD</h1>
           </div>
           <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mt-2 font-bold">{role}</p>
         </div>
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="sidebar-element-8">
           {menuItems.map(item => (
             <button key={item.view} onClick={() => { setActiveView(item.view); setIsOpen(false); }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group relative overflow-hidden ${activeView === item.view ? 'bg-gradient-to-r from-blue-600/20 to-blue-400/10 text-blue-100 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]' : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'}`}>
@@ -48,9 +49,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView, rol
             </button>
           ))}
         </nav>
-        <button onClick={onLogout} className="m-4 flex items-center gap-3 px-4 py-3 rounded-xl bg-red-900/20 text-red-400 hover:bg-red-900/30 transition-all">
-          <LogOut className="w-5 h-5" />
-          <span className="font-bold">Logout</span>
+        <button onClick={onLogout} className="sidebar-element-9">
+          <LogOut className="sidebar-element-10" />
+          <span className="sidebar-element-11">Logout</span>
         </button>
       </div>
     </>

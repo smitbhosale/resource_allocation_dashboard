@@ -1,3 +1,4 @@
+import './css/App.css';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { EmergencyRequest, ResourceUnit, ResourceStatus, UserRole, ActiveView, Severity, MapZone } from './types';
@@ -224,28 +225,28 @@ const App: React.FC = () => {
     <div className={`flex h-screen overflow-hidden ${role === 'authority' ? 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black text-slate-200' : 'bg-slate-50 text-slate-900'}`}>
       <Sidebar activeView={activeView} setActiveView={setActiveView} role={role} onLogout={handleLogout} />
 
-      <main className="flex-1 flex flex-col min-w-0">
+      <main className="app-element-1">
         {!isOnline && role === 'citizen' && (
-          <div className="bg-orange-500 text-white px-4 py-2 flex items-center justify-center gap-2 text-sm font-bold animate-pulse">
-            <CloudOff className="w-4 h-4" /> LOW CONNECTIVITY MODE: REPORTS WILL SYNC AUTOMATICALLY
+          <div className="app-element-2">
+            <CloudOff className="app-element-3" /> LOW CONNECTIVITY MODE: REPORTS WILL SYNC AUTOMATICALLY
           </div>
         )}
 
         {activeView === 'home' && role === 'authority' && (
-          <div className="flex-1 flex flex-col md:flex-row min-h-0">
-            <div className="flex-1 relative flex flex-col">
-              <div className="flex items-center justify-between bg-slate-900/50 backdrop-blur-md border-b border-white/5 pr-4">
+          <div className="app-element-4">
+            <div className="app-element-5">
+              <div className="app-element-6">
                 <SummaryStats requests={requests} resources={resources} />
                 <button
                   onClick={simulateAlert}
                   className="group relative flex items-center gap-2 px-4 py-2 bg-slate-900/50 hover:bg-blue-900/20 text-blue-100 rounded-xl text-xs font-bold border border-white/5 hover:border-blue-500/30 transition-all shadow-[0_0_15px_-5px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_-5px_rgba(59,130,246,0.4)] overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <Play className="w-3 h-3 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                  <div className="app-element-7" />
+                  <Play className="app-element-8" />
                   Simulate Alert
                 </button>
               </div>
-              <div className="flex-1 relative">
+              <div className="app-element-9">
                 <MapVisualizer
                   requests={requests}
                   resources={resources}
@@ -258,41 +259,41 @@ const App: React.FC = () => {
                   onZonesChange={setZones}
                 />
                 {selectedRequest && (
-                  <div className="absolute bottom-6 left-6 right-6 z-30">
+                  <div className="app-element-10">
                     <div className="bg-slate-900/80 backdrop-blur-2xl border border-white/10 p-5 rounded-2xl shadow-[0_0_50px_-10px_rgba(0,0,0,0.7)] flex items-center justify-between gap-6 relative overflow-hidden group">
-                      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                      <div className="flex items-center gap-4 flex-1">
+                      <div className="app-element-11" />
+                      <div className="app-element-12" />
+                      <div className="app-element-13">
                         <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center font-bold ${selectedRequest.severity === Severity.CRITICAL ? 'bg-red-600 text-white' : 'bg-slate-800 text-slate-400'
                           }`}>{selectedRequest.severity[0]}</div>
-                        <div className="min-w-0">
-                          <h4 className="font-bold text-white truncate">{selectedRequest.disasterType} <span className="text-[10px] text-slate-500 font-mono ml-2">#{selectedRequest.id}</span></h4>
-                          <p className="text-xs text-slate-400 max-w-md truncate">{selectedRequest.description}</p>
+                        <div className="app-element-14">
+                          <h4 className="app-element-15">{selectedRequest.disasterType} <span className="app-element-16">#{selectedRequest.id}</span></h4>
+                          <p className="app-element-17">{selectedRequest.description}</p>
                         </div>
                       </div>
 
                       {assignedResource && (
-                        <div className="flex flex-col gap-1 items-end border-l border-slate-800 pl-6 h-full justify-center">
-                          <div className="flex items-center gap-2 text-blue-400 text-xs font-bold">
-                            <Truck className="w-4 h-4" />
+                        <div className="app-element-18">
+                          <div className="app-element-19">
+                            <Truck className="app-element-20" />
                             {assignedResource.name}
                           </div>
-                          <div className="flex items-center gap-2">
+                          <div className="app-element-21">
                             <span className={`w-2 h-2 rounded-full ${assignedResource.status === ResourceStatus.IN_USE ? 'bg-orange-500 animate-pulse' : 'bg-green-500'}`} />
-                            <span className="text-[10px] uppercase font-black tracking-widest text-slate-400">
+                            <span className="app-element-22">
                               {assignedResource.status}
                             </span>
                           </div>
                         </div>
                       )}
 
-                      <div className="flex gap-2 border-l border-slate-800 pl-6 h-full items-center">
+                      <div className="app-element-23">
                         {selectedRequest.status === 'Pending' && (
                           <button
                             onClick={() => setIsAllocationModalOpen(true)}
                             className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-xl font-bold text-sm text-white shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.6)] transition-all flex items-center gap-2 border border-white/10"
                           >
-                            <Truck className="w-4 h-4" />
+                            <Truck className="app-element-24" />
                             Dispatch Unit
                           </button>
                         )}
@@ -301,13 +302,13 @@ const App: React.FC = () => {
                             onClick={() => handleResolve(selectedRequest.id)}
                             className="px-6 py-2.5 bg-green-600 hover:bg-green-500 rounded-xl font-bold text-sm shadow-lg shadow-green-500/20 transition-all flex items-center gap-2"
                           >
-                            <CheckCircle className="w-4 h-4" />
+                            <CheckCircle className="app-element-25" />
                             Mark Resolved
                           </button>
                         )}
                         {selectedRequest.status === 'Resolved' && (
                           <div className="px-6 py-2.5 bg-slate-800 text-slate-400 rounded-xl font-bold text-sm border border-slate-700 flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4" />
+                            <CheckCircle className="app-element-26" />
                             Task Completed
                           </div>
                         )}
@@ -323,7 +324,7 @@ const App: React.FC = () => {
                 )}
               </div>
             </div>
-            <div className="hidden lg:block w-96 border-l border-white/5 bg-slate-950/30 backdrop-blur-sm">
+            <div className="app-element-27">
               <EmergencyPanel
                 requests={sortedRequests}
                 resources={resources}
@@ -339,7 +340,7 @@ const App: React.FC = () => {
         {activeView === 'chat' && <ChatbotView onSubmit={(data) => handleNewReport(data, false)} />}
         {activeView === 'guidelines' && <SurvivalGuide />}
         {activeView === 'intelligence' && <IntelligenceView requests={requests} resources={resources} />}
-        {activeView === 'inventory' && <div className="flex-1 p-0 flex justify-center"><InventoryPanel resources={resources} /></div>}
+        {activeView === 'inventory' && <div className="app-element-28"><InventoryPanel resources={resources} /></div>}
 
         {activeView === 'home' && role === 'citizen' && <SurvivalGuide />}
 

@@ -1,0 +1,50 @@
+/* Styles for InventoryPanel component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.inventorypanel-element-1 {
+  @apply w-full max-w-5xl mx-auto p-6;
+}
+
+.inventorypanel-element-2 {
+  @apply bg-white rounded-2xl shadow-xl p-6;
+}
+
+.inventorypanel-element-3 {
+  @apply flex items-center justify-between mb-6;
+}
+
+.inventorypanel-element-4 {
+  @apply text-2xl font-black text-slate-900;
+}
+
+.inventorypanel-element-5 {
+  @apply flex gap-2;
+}
+
+.inventorypanel-element-6 {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.inventorypanel-element-7 {
+  @apply p-4 border-2 border-slate-200 rounded-xl hover:border-blue-300 transition-all;
+}
+
+.inventorypanel-element-8 {
+  @apply flex items-center justify-between mb-2;
+}
+
+.inventorypanel-element-9 {
+  @apply text-2xl;
+}
+
+.inventorypanel-element-10 {
+  @apply font-bold text-slate-900 mb-1;
+}
+
+.inventorypanel-element-11 {
+  @apply text-sm text-slate-600;
+}
+
+.inventorypanel-element-12 {
+  @apply mt-3 text-xs text-slate-500;
+}

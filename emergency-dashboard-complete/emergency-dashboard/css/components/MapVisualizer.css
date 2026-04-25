@@ -1,0 +1,6 @@
+/* Styles for MapVisualizer component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.mapvisualizer-element-1 {
+  @apply absolute inset-0 w-full h-full border-0 pointer-events-auto opacity-100;
+}

@@ -1,0 +1,62 @@
+/* Styles for EmergencyPanel component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.emergencypanel-element-1 {
+  @apply h-full flex flex-col bg-transparent;
+}
+
+.emergencypanel-element-2 {
+  @apply p-4 border-b border-white/5;
+}
+
+.emergencypanel-element-3 {
+  @apply text-xl font-black text-white;
+}
+
+.emergencypanel-element-4 {
+  @apply text-xs text-slate-400 mt-1;
+}
+
+.emergencypanel-element-5 {
+  @apply flex-1 overflow-y-auto p-4 space-y-3;
+}
+
+.emergencypanel-element-6 {
+  @apply flex items-start justify-between mb-2 pl-2;
+}
+
+.emergencypanel-element-7 {
+  @apply flex items-center gap-2;
+}
+
+.emergencypanel-element-8 {
+  @apply text-[10px] font-mono text-slate-600;
+}
+
+.emergencypanel-element-9 {
+  @apply font-bold text-white mb-1;
+}
+
+.emergencypanel-element-10 {
+  @apply text-xs text-slate-400 mb-3;
+}
+
+.emergencypanel-element-11 {
+  @apply flex items-center justify-between text-xs;
+}
+
+.emergencypanel-element-12 {
+  @apply flex items-center gap-1 text-slate-500;
+}
+
+.emergencypanel-element-13 {
+  @apply w-3 h-3;
+}
+
+.emergencypanel-element-14 {
+  @apply flex items-center gap-1 px-2 py-1 bg-blue-600 hover:bg-blue-500 rounded text-white font-bold;
+}
+
+.emergencypanel-element-15 {
+  @apply w-3 h-3;
+}

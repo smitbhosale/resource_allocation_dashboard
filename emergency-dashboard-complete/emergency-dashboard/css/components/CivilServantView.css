@@ -1,0 +1,90 @@
+/* Styles for CivilServantView component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.civilservantview-element-1 {
+  @apply flex-1 p-6 overflow-y-auto bg-slate-50;
+}
+
+.civilservantview-element-2 {
+  @apply max-w-4xl mx-auto;
+}
+
+.civilservantview-element-3 {
+  @apply mb-6;
+}
+
+.civilservantview-element-4 {
+  @apply text-2xl font-black text-slate-900;
+}
+
+.civilservantview-element-5 {
+  @apply text-sm text-slate-500;
+}
+
+.civilservantview-element-6 {
+  @apply space-y-4;
+}
+
+.civilservantview-element-7 {
+  @apply bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500;
+}
+
+.civilservantview-element-8 {
+  @apply flex items-start justify-between mb-4;
+}
+
+.civilservantview-element-9 {
+  @apply text-xl font-black text-slate-900;
+}
+
+.civilservantview-element-10 {
+  @apply text-sm text-slate-500;
+}
+
+.civilservantview-element-11 {
+  @apply px-3 py-1 bg-orange-100 text-orange-800 rounded-lg text-xs font-bold;
+}
+
+.civilservantview-element-12 {
+  @apply text-slate-700 mb-4;
+}
+
+.civilservantview-element-13 {
+  @apply flex gap-3;
+}
+
+.civilservantview-element-14 {
+  @apply flex-1 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all;
+}
+
+.civilservantview-element-15 {
+  @apply w-5 h-5;
+}
+
+.civilservantview-element-16 {
+  @apply flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl flex items-center justify-center gap-2 transition-all;
+}
+
+.civilservantview-element-17 {
+  @apply w-5 h-5;
+}
+
+.civilservantview-element-18 {
+  @apply flex-1 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all;
+}
+
+.civilservantview-element-19 {
+  @apply w-5 h-5;
+}
+
+.civilservantview-element-20 {
+  @apply text-center py-12 text-slate-500;
+}
+
+.civilservantview-element-21 {
+  @apply text-lg font-bold;
+}
+
+.civilservantview-element-22 {
+  @apply text-sm;
+}

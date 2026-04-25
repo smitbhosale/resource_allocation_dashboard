@@ -1,3 +1,4 @@
+import '../css/components/MapVisualizer.css';
 import React from 'react';
 import { EmergencyRequest, ResourceUnit, MapZone, UserRole, Severity } from '../types';
 import { MapPin, Navigation } from 'lucide-react';
@@ -58,7 +59,7 @@ export const MapVisualizer: React.FC<MapVisualizerProps> = ({
       <iframe 
         ref={iframeRef}
         src="/map_dashboard.html" 
-        className="absolute inset-0 w-full h-full border-0 pointer-events-auto opacity-100" 
+        className="mapvisualizer-element-1" 
         title="Interactive Map Background"
         style={{ zIndex: 0 }}
       ></iframe>

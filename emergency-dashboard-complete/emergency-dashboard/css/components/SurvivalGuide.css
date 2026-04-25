@@ -1,0 +1,82 @@
+/* Styles for SurvivalGuide component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.survivalguide-element-1 {
+  @apply flex-1 p-6 overflow-y-auto bg-slate-50;
+}
+
+.survivalguide-element-2 {
+  @apply max-w-4xl mx-auto;
+}
+
+.survivalguide-element-3 {
+  @apply flex items-center gap-3 mb-6;
+}
+
+.survivalguide-element-4 {
+  @apply w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center;
+}
+
+.survivalguide-element-5 {
+  @apply w-7 h-7 text-green-600;
+}
+
+.survivalguide-element-6 {
+  @apply text-2xl font-black text-slate-900;
+}
+
+.survivalguide-element-7 {
+  @apply text-sm text-slate-500;
+}
+
+.survivalguide-element-8 {
+  @apply mb-6;
+}
+
+.survivalguide-element-9 {
+  @apply relative;
+}
+
+.survivalguide-element-10 {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400;
+}
+
+.survivalguide-element-11 {
+  @apply w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none;
+}
+
+.survivalguide-element-12 {
+  @apply space-y-4;
+}
+
+.survivalguide-element-13 {
+  @apply bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500;
+}
+
+.survivalguide-element-14 {
+  @apply flex items-start justify-between mb-4;
+}
+
+.survivalguide-element-15 {
+  @apply text-xl font-black text-slate-900;
+}
+
+.survivalguide-element-16 {
+  @apply text-sm text-slate-500;
+}
+
+.survivalguide-element-17 {
+  @apply space-y-2;
+}
+
+.survivalguide-element-18 {
+  @apply flex items-start gap-3;
+}
+
+.survivalguide-element-19 {
+  @apply flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold;
+}
+
+.survivalguide-element-20 {
+  @apply text-slate-700;
+}

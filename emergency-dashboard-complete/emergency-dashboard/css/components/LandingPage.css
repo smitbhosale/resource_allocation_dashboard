@@ -1,0 +1,122 @@
+/* Styles for LandingPage component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.landingpage-element-1 {
+  @apply relative bg-slate-950 min-h-[400vh] text-white overflow-x-hidden;
+}
+
+.landingpage-element-2 {
+  @apply fixed top-0 left-0 w-full h-full z-0 pointer-events-none;
+}
+
+.landingpage-element-3 {
+  @apply absolute inset-0 bg-slate-950/10 z-10;
+}
+
+.landingpage-element-4 {
+  @apply block w-full h-full object-cover z-0;
+}
+
+.landingpage-element-5 {
+  @apply w-24 h-24 object-contain rounded-2xl shadow-2xl bg-white mb-8;
+}
+
+.landingpage-element-6 {
+  @apply text-6xl md:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-6;
+}
+
+.landingpage-element-7 {
+  @apply text-xl md:text-2xl text-blue-200 font-medium tracking-wide;
+}
+
+.landingpage-element-8 {
+  @apply absolute bottom-10 animate-bounce flex flex-col items-center gap-2 text-slate-400;
+}
+
+.landingpage-element-9 {
+  @apply text-xs font-bold uppercase tracking-widest;
+}
+
+.landingpage-element-10 {
+  @apply w-px h-16 bg-gradient-to-b from-slate-400 to-transparent;
+}
+
+.landingpage-element-11 {
+  @apply max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl;
+}
+
+.landingpage-element-12 {
+  @apply w-8 h-8 text-blue-400;
+}
+
+.landingpage-element-13 {
+  @apply text-4xl md:text-5xl font-black mb-6 leading-tight;
+}
+
+.landingpage-element-14 {
+  @apply text-blue-400;
+}
+
+.landingpage-element-15 {
+  @apply text-xl text-slate-300 leading-relaxed;
+}
+
+.landingpage-element-16 {
+  @apply max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl text-right flex flex-col items-end;
+}
+
+.landingpage-element-17 {
+  @apply w-8 h-8 text-purple-400;
+}
+
+.landingpage-element-18 {
+  @apply text-4xl md:text-5xl font-black mb-6 leading-tight;
+}
+
+.landingpage-element-19 {
+  @apply text-purple-400;
+}
+
+.landingpage-element-20 {
+  @apply text-xl text-slate-300 leading-relaxed;
+}
+
+.landingpage-element-21 {
+  @apply max-w-xl bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl;
+}
+
+.landingpage-element-22 {
+  @apply w-8 h-8 text-emerald-400;
+}
+
+.landingpage-element-23 {
+  @apply text-4xl md:text-5xl font-black mb-6 leading-tight;
+}
+
+.landingpage-element-24 {
+  @apply text-emerald-400;
+}
+
+.landingpage-element-25 {
+  @apply text-xl text-slate-300 leading-relaxed;
+}
+
+.landingpage-element-26 {
+  @apply text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-center;
+}
+
+.landingpage-element-27 {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400;
+}
+
+.landingpage-element-28 {
+  @apply absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out;
+}
+
+.landingpage-element-29 {
+  @apply relative z-10 text-white;
+}
+
+.landingpage-element-30 {
+  @apply w-8 h-8 relative z-10 text-white group-hover:translate-x-2 transition-transform;
+}

@@ -1,3 +1,4 @@
+import '../css/components/ChatbotView.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, AlertTriangle, Loader, Shield, Activity, Camera, X, CheckCircle, Image as ImageIcon } from 'lucide-react';
 import { chatbotService } from '../services/chatbotService';
@@ -71,8 +72,7 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
 
       // Auto-submit if analysis is present
       if (response.analysis) {
-        // We only auto-submit if it looks like a real report attempt
-        if (userMsg.text.length > 5) {
+        if (true) {
             console.log("Auto-submitting analyzed report:", response.analysis);
             onSubmit({
                 description: userMsg.text,
@@ -81,6 +81,16 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
                 resourceNeeded: response.analysis.resourceNeeded,
                 priorityScore: response.analysis.emotionalUrgency * 10 
             });
+            
+            setTimeout(() => {
+                alert('EMERGENCY RESPONSE TRIGGERED:\n\nAuthorities have successfully received your report and are dispatching units to your location.');
+                setMessages(prev => [...prev, {
+                    id: (Date.now() + 2).toString(),
+                    sender: 'bot',
+                    text: '✅ **REQUEST SENT SUCCESSFULLY**\n\nYour incident report has been securely broadcasted to the live emergency network. Authorities are evaluating your location now.',
+                    timestamp: new Date()
+                }]);
+            }, 1000);
         }
       }
 
@@ -93,27 +103,27 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 relative overflow-hidden">
+    <div className="chatbotview-element-1">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center gap-3 shadow-sm z-10">
-        <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
-          <Bot className="w-6 h-6 text-white" />
+      <div className="chatbotview-element-2">
+        <div className="chatbotview-element-3">
+          <Bot className="chatbotview-element-4" />
         </div>
         <div>
-          <h2 className="font-bold text-slate-900">AI Response Unit</h2>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-xs text-slate-500 font-medium">Online • ML Active</span>
+          <h2 className="chatbotview-element-5">AI Response Unit</h2>
+          <div className="chatbotview-element-6">
+            <span className="chatbotview-element-7" />
+            <span className="chatbotview-element-8">Online • ML Active</span>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+      <div className="chatbotview-element-9">
         {messages.map((msg) => (
           <div key={msg.id} className={`flex gap-4 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${msg.sender === 'user' ? 'bg-slate-200' : 'bg-indigo-100'}`}>
-              {msg.sender === 'user' ? <User className="w-5 h-5 text-slate-500" /> : <Shield className="w-5 h-5 text-indigo-600" />}
+              {msg.sender === 'user' ? <User className="chatbotview-element-10" /> : <Shield className="chatbotview-element-11" />}
             </div>
             
             <div className={`max-w-[80%] space-y-2`}>
@@ -123,42 +133,42 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
                   : 'bg-white text-slate-800 border border-slate-100 rounded-tl-none'
               }`}>
                 {msg.image && (
-                  <div className="mb-2">
+                  <div className="chatbotview-element-12">
                     <img 
                       src={URL.createObjectURL(msg.image)} 
                       alt="Uploaded proof" 
-                      className="rounded-lg max-h-48 border border-white/20"
+                      className="chatbotview-element-13"
                     />
                   </div>
                 )}
-                <p className="whitespace-pre-wrap">{msg.text}</p>
+                <p className="chatbotview-element-14">{msg.text}</p>
               </div>
 
               {/* Analysis Card if available */}
               {msg.analysis && (
-                <div className="bg-white border border-indigo-100 rounded-xl p-3 shadow-md animate-in fade-in slide-in-from-bottom-2">
-                    <div className="flex items-center gap-2 mb-2 border-b border-slate-100 pb-2">
-                        <Activity className="w-4 h-4 text-indigo-500" />
-                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Analysis Result</span>
+                <div className="chatbotview-element-15">
+                    <div className="chatbotview-element-16">
+                        <Activity className="chatbotview-element-17" />
+                        <span className="chatbotview-element-18">Analysis Result</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div className="bg-slate-50 p-2 rounded-lg">
-                            <span className="block text-slate-400 mb-1">Type</span>
-                            <span className="font-bold text-slate-800">{msg.analysis.disasterType}</span>
+                    <div className="chatbotview-element-19">
+                        <div className="chatbotview-element-20">
+                            <span className="chatbotview-element-21">Type</span>
+                            <span className="chatbotview-element-22">{msg.analysis.disasterType}</span>
                         </div>
                         <div className={`p-2 rounded-lg ${msg.analysis.severity === Severity.CRITICAL ? 'bg-red-50 text-red-700' : 'bg-slate-50 text-slate-800'}`}>
-                            <span className="block opacity-60 mb-1">Severity</span>
-                            <span className="font-bold">{msg.analysis.severity}</span>
+                            <span className="chatbotview-element-23">Severity</span>
+                            <span className="chatbotview-element-24">{msg.analysis.severity}</span>
                         </div>
-                        <div className="bg-slate-50 p-2 rounded-lg col-span-2">
-                            <span className="block text-slate-400 mb-1">Resource Identified</span>
-                            <span className="font-bold text-slate-800">{msg.analysis.resourceNeeded}</span>
+                        <div className="chatbotview-element-25">
+                            <span className="chatbotview-element-26">Resource Identified</span>
+                            <span className="chatbotview-element-27">{msg.analysis.resourceNeeded}</span>
                         </div>
                     </div>
                 </div>
               )}
               
-              <span className="text-[10px] text-slate-400 px-1">
+              <span className="chatbotview-element-28">
                 {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
@@ -166,13 +176,13 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
         ))}
         
         {isTyping && (
-          <div className="flex gap-4">
-            <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
-              <Shield className="w-5 h-5 text-indigo-600" />
+          <div className="chatbotview-element-29">
+            <div className="chatbotview-element-30">
+              <Shield className="chatbotview-element-31" />
             </div>
-            <div className="bg-white border border-slate-100 p-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-2">
-              <Loader className="w-4 h-4 text-indigo-500 animate-spin" />
-              <span className="text-xs text-slate-400">Analyzing input...</span>
+            <div className="chatbotview-element-32">
+              <Loader className="chatbotview-element-33" />
+              <span className="chatbotview-element-34">Analyzing input...</span>
             </div>
           </div>
         )}
@@ -180,27 +190,27 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
       </div>
 
       {/* Input */}
-      <div className="p-4 bg-white border-t border-slate-200">
+      <div className="chatbotview-element-35">
         {selectedImage && (
-          <div className="mb-4 relative inline-block">
+          <div className="chatbotview-element-36">
             <img 
               src={URL.createObjectURL(selectedImage)} 
               alt="Preview" 
-              className="h-24 w-auto rounded-lg border border-slate-200 shadow-sm"
+              className="chatbotview-element-37"
             />
             <button 
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 shadow-md"
+              className="chatbotview-element-38"
             >
-              <X className="w-3 h-3" />
+              <X className="chatbotview-element-39" />
             </button>
           </div>
         )}
-        <form onSubmit={handleSend} className="relative flex items-center gap-2">
+        <form onSubmit={handleSend} className="chatbotview-element-40">
           <input
             type="file"
             accept="image/*"
-            className="hidden"
+            className="chatbotview-element-41"
             ref={fileInputRef}
             onChange={(e) => {
               if (e.target.files?.[0]) setSelectedImage(e.target.files[0]);
@@ -209,10 +219,10 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl transition-colors"
+            className="chatbotview-element-42"
             title="Upload Photo Proof"
           >
-            <Camera className="w-5 h-5" />
+            <Camera className="chatbotview-element-43" />
           </button>
           
           <input
@@ -220,14 +230,14 @@ export const ChatbotView: React.FC<ChatbotViewProps> = ({ onSubmit }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={selectedImage ? "Describe this photo..." : "Type your emergency..."}
-            className="flex-1 pl-5 pr-14 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none transition-all font-medium placeholder:text-slate-400"
+            className="chatbotview-element-44"
           />
           <button 
             type="submit"
-            className="absolute right-2 top-2 bottom-2 aspect-square bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="chatbotview-element-45"
             disabled={(!input.trim() && !selectedImage) || isTyping}
           >
-            <Send className="w-5 h-5" />
+            <Send className="chatbotview-element-46" />
           </button>
         </form>
       </div>

@@ -1,0 +1,358 @@
+/* Styles for AuthPage component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.authpage-element-1 {
+  @apply min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4 sm:p-6;
+}
+
+.authpage-element-2 {
+  @apply absolute inset-0 overflow-hidden pointer-events-none;
+}
+
+.authpage-element-3 {
+  @apply absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse;
+}
+
+.authpage-element-4 {
+  @apply absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse;
+}
+
+.authpage-element-5 {
+  @apply w-full max-w-6xl relative z-10;
+}
+
+.authpage-element-6 {
+  @apply grid lg:grid-cols-2 gap-8 items-center;
+}
+
+.authpage-element-7 {
+  @apply hidden lg:block text-white space-y-8;
+}
+
+.authpage-element-8 {
+  @apply space-y-4;
+}
+
+.authpage-element-9 {
+  @apply flex items-center gap-3 mb-6;
+}
+
+.authpage-element-10 {
+  @apply w-16 h-16 object-contain rounded-2xl shadow-2xl bg-white;
+}
+
+.authpage-element-11 {
+  @apply text-4xl font-black tracking-tight;
+}
+
+.authpage-element-12 {
+  @apply text-blue-300 text-sm font-medium;
+}
+
+.authpage-element-13 {
+  @apply text-5xl font-black leading-tight bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent;
+}
+
+.authpage-element-14 {
+  @apply text-xl text-slate-300 leading-relaxed;
+}
+
+.authpage-element-15 {
+  @apply grid grid-cols-3 gap-4;
+}
+
+.authpage-element-16 {
+  @apply bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20;
+}
+
+.authpage-element-17 {
+  @apply text-3xl font-black text-blue-400;
+}
+
+.authpage-element-18 {
+  @apply text-sm text-slate-300 mt-1;
+}
+
+.authpage-element-19 {
+  @apply bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20;
+}
+
+.authpage-element-20 {
+  @apply text-3xl font-black text-green-400;
+}
+
+.authpage-element-21 {
+  @apply text-sm text-slate-300 mt-1;
+}
+
+.authpage-element-22 {
+  @apply bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20;
+}
+
+.authpage-element-23 {
+  @apply text-3xl font-black text-purple-400;
+}
+
+.authpage-element-24 {
+  @apply text-sm text-slate-300 mt-1;
+}
+
+.authpage-element-25 {
+  @apply space-y-3;
+}
+
+.authpage-element-26 {
+  @apply flex items-center gap-3 text-slate-300;
+}
+
+.authpage-element-27 {
+  @apply w-5 h-5 text-green-400 flex-shrink-0;
+}
+
+.authpage-element-28 {
+  @apply flex items-center gap-3 text-slate-300;
+}
+
+.authpage-element-29 {
+  @apply w-5 h-5 text-green-400 flex-shrink-0;
+}
+
+.authpage-element-30 {
+  @apply flex items-center gap-3 text-slate-300;
+}
+
+.authpage-element-31 {
+  @apply w-5 h-5 text-green-400 flex-shrink-0;
+}
+
+.authpage-element-32 {
+  @apply bg-white rounded-3xl shadow-2xl p-8 sm:p-10;
+}
+
+.authpage-element-33 {
+  @apply lg:hidden mb-8;
+}
+
+.authpage-element-34 {
+  @apply flex items-center gap-3 mb-4;
+}
+
+.authpage-element-35 {
+  @apply w-12 h-12 object-contain rounded-xl bg-white;
+}
+
+.authpage-element-36 {
+  @apply text-2xl font-black text-slate-900;
+}
+
+.authpage-element-37 {
+  @apply text-blue-600 text-xs font-medium;
+}
+
+.authpage-element-38 {
+  @apply mb-8;
+}
+
+.authpage-element-39 {
+  @apply text-3xl font-black text-slate-900 mb-2;
+}
+
+.authpage-element-40 {
+  @apply text-slate-500;
+}
+
+.authpage-element-41 {
+  @apply mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3;
+}
+
+.authpage-element-42 {
+  @apply text-sm text-red-800 font-medium;
+}
+
+.authpage-element-43 {
+  @apply mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3;
+}
+
+.authpage-element-44 {
+  @apply text-sm text-green-800 font-medium;
+}
+
+.authpage-element-45 {
+  @apply mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl;
+}
+
+.authpage-element-46 {
+  @apply text-xs font-bold text-blue-900 mb-3;
+}
+
+.authpage-element-47 {
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-2;
+}
+
+.authpage-element-48 {
+  @apply p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all text-left;
+}
+
+.authpage-element-49 {
+  @apply flex items-center gap-2 mb-1;
+}
+
+.authpage-element-50 {
+  @apply w-4 h-4 text-blue-600;
+}
+
+.authpage-element-51 {
+  @apply text-xs font-bold text-slate-900;
+}
+
+.authpage-element-52 {
+  @apply text-[10px] text-slate-500;
+}
+
+.authpage-element-53 {
+  @apply p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all text-left;
+}
+
+.authpage-element-54 {
+  @apply flex items-center gap-2 mb-1;
+}
+
+.authpage-element-55 {
+  @apply w-4 h-4 text-blue-600;
+}
+
+.authpage-element-56 {
+  @apply text-xs font-bold text-slate-900;
+}
+
+.authpage-element-57 {
+  @apply text-[10px] text-slate-500;
+}
+
+.authpage-element-58 {
+  @apply p-3 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 transition-all text-left;
+}
+
+.authpage-element-59 {
+  @apply flex items-center gap-2 mb-1;
+}
+
+.authpage-element-60 {
+  @apply w-4 h-4 text-blue-600;
+}
+
+.authpage-element-61 {
+  @apply text-xs font-bold text-slate-900;
+}
+
+.authpage-element-62 {
+  @apply text-[10px] text-slate-500;
+}
+
+.authpage-element-63 {
+  @apply space-y-5;
+}
+
+.authpage-element-64 {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.authpage-element-65 {
+  @apply relative;
+}
+
+.authpage-element-66 {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400;
+}
+
+.authpage-element-67 {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.authpage-element-68 {
+  @apply relative;
+}
+
+.authpage-element-69 {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400;
+}
+
+.authpage-element-70 {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.authpage-element-71 {
+  @apply relative;
+}
+
+.authpage-element-72 {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400;
+}
+
+.authpage-element-73 {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.authpage-element-74 {
+  @apply relative;
+}
+
+.authpage-element-75 {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400;
+}
+
+.authpage-element-76 {
+  @apply absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600;
+}
+
+.authpage-element-77 {
+  @apply w-5 h-5;
+}
+
+.authpage-element-78 {
+  @apply w-5 h-5;
+}
+
+.authpage-element-79 {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.authpage-element-80 {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.authpage-element-81 {
+  @apply text-sm font-bold text-slate-900;
+}
+
+.authpage-element-82 {
+  @apply text-sm font-bold text-slate-900;
+}
+
+.authpage-element-83 {
+  @apply w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.authpage-element-84 {
+  @apply flex items-center justify-center gap-2;
+}
+
+.authpage-element-85 {
+  @apply w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin;
+}
+
+.authpage-element-86 {
+  @apply mt-6 text-center;
+}
+
+.authpage-element-87 {
+  @apply text-blue-600 hover:text-blue-700 font-bold text-sm;
+}
+
+.authpage-element-88 {
+  @apply mt-8 pt-6 border-t border-slate-200;
+}
+
+.authpage-element-89 {
+  @apply text-xs text-slate-500 text-center;
+}

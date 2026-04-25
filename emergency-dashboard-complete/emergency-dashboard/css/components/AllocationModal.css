@@ -1,0 +1,114 @@
+/* Styles for AllocationModal component */
+/* Tailwind classes are primarily used, this file is for custom CSS */
+
+.allocationmodal-element-1 {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4;
+}
+
+.allocationmodal-element-2 {
+  @apply bg-slate-900 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-700;
+}
+
+.allocationmodal-element-3 {
+  @apply flex items-center justify-between p-6 border-b border-slate-800;
+}
+
+.allocationmodal-element-4 {
+  @apply text-2xl font-black text-white;
+}
+
+.allocationmodal-element-5 {
+  @apply p-2 hover:bg-slate-800 rounded-lg transition-all;
+}
+
+.allocationmodal-element-6 {
+  @apply w-6 h-6 text-slate-400;
+}
+
+.allocationmodal-element-7 {
+  @apply p-6 space-y-6;
+}
+
+.allocationmodal-element-8 {
+  @apply p-4 bg-slate-800 rounded-xl;
+}
+
+.allocationmodal-element-9 {
+  @apply font-bold text-white mb-2;
+}
+
+.allocationmodal-element-10 {
+  @apply space-y-1 text-sm;
+}
+
+.allocationmodal-element-11 {
+  @apply text-slate-300;
+}
+
+.allocationmodal-element-12 {
+  @apply text-slate-500;
+}
+
+.allocationmodal-element-13 {
+  @apply text-slate-300;
+}
+
+.allocationmodal-element-14 {
+  @apply text-slate-500;
+}
+
+.allocationmodal-element-15 {
+  @apply text-slate-300;
+}
+
+.allocationmodal-element-16 {
+  @apply text-slate-500;
+}
+
+.allocationmodal-element-17 {
+  @apply p-4 bg-blue-950/30 border-2 border-blue-600 rounded-xl;
+}
+
+.allocationmodal-element-18 {
+  @apply flex items-center gap-2 mb-3;
+}
+
+.allocationmodal-element-19 {
+  @apply w-5 h-5 text-blue-400;
+}
+
+.allocationmodal-element-20 {
+  @apply font-bold text-blue-400;
+}
+
+.allocationmodal-element-21 {
+  @apply w-full p-4 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold transition-all flex items-center justify-between;
+}
+
+.allocationmodal-element-22 {
+  @apply text-sm;
+}
+
+.allocationmodal-element-23 {
+  @apply space-y-2;
+}
+
+.allocationmodal-element-24 {
+  @apply font-bold text-white;
+}
+
+.allocationmodal-element-25 {
+  @apply space-y-2 max-h-60 overflow-y-auto;
+}
+
+.allocationmodal-element-26 {
+  @apply w-full p-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition-all flex items-center justify-between;
+}
+
+.allocationmodal-element-27 {
+  @apply text-white font-medium;
+}
+
+.allocationmodal-element-28 {
+  @apply w-5 h-5 text-slate-400;
+}
